@@ -1,7 +1,3 @@
-Here is your updated technical documentation for **Manipal Edu**, modified from the original **StudyNotion** description. The structure, technology stack, and content have been revised accordingly:
-
----
-
 # **Manipal Edu: An EdTech Platform**
 
 Manipal Edu is a fully functional EdTech (Educational Technology) platform that enables users to create, consume, and rate educational content. The platform is built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
@@ -193,6 +189,3 @@ npm start
 
 Visit: `http://localhost:3000`
 
----
-
-If you'd like, I can also generate the architecture diagram for you visually. Just let me know!
