@@ -14,4 +14,3 @@ exports.cloudnairyconnect= ()=>{
         console.log("error connecting CD"+error)
     }
 }
-//HELLO
