@@ -2,6 +2,8 @@
 
 Manipal Edu is a fully functional EdTech (Educational Technology) platform that enables users to create, consume, and rate educational content. The platform is built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
 
+🚀 **Live Demo:** [https://manipaledunew.vercel.app](https://manipaledunew.vercel.app)
+
 ---
 
 ## **Table of Contents**
