@@ -24,6 +24,7 @@ const SearchCourse = () => {
 
     useEffect(() => {
         fetchSearchResults();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery])
 
 
