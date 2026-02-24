@@ -40,8 +40,8 @@ const NavBar = ({ setProgress }) => {
             const result = await apiConnector("GET", categories.CATEGORIES_API);
             if (result?.data?.data?.length > 0) {
                 setsublinks(result?.data?.data);
+                localStorage.setItem("sublinks", JSON.stringify(result.data.data));
             }
-            localStorage.setItem("sublinks", JSON.stringify(result.data.data));
 
         } catch (error) {
             // setsublinks(JSON.parse(localStorage.getItem("sublinks")));

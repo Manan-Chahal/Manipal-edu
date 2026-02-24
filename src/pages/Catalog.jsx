@@ -22,11 +22,14 @@ const Catalog = () => {
   const fetchSublinks=  async ()=>{
     try {
         const result = await apiConnector("GET",categories.CATEGORIES_API);
-        const category_id= result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]._id;
-        setcategoryID(category_id);      
-        setDesc(result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]);
+        const data = result?.data?.data;
+        if (!data) return;
+        const matched = data.filter((item)=>item.name=== Catalog.catalog)[0];
+        if (!matched) return;
+        setcategoryID(matched._id);
+        setDesc(matched);
         // console.log("Desc",Desc);  
-        // console.log(category_id);
+        // console.log(matched._id);
     } catch (error) {
         console.log("could not fetch sublinks");
         console.log(error);

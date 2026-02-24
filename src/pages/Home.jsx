@@ -20,21 +20,27 @@ import RatingSlider from '../Components/core/Ratings/RatingSlider';
 
 function Home() {
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryID = "6475dbeb49dcc886b5698441";
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchCatalogPageData = async () => {
-            
-                const result = await getCatalogaPageData(categoryID,dispatch);
-                setCatalogPageData(result);
-                // console.log("page data",CatalogPageData);
-            
+            try {
+                // Fetch all categories and use the first one
+                const { apiConnector } = await import('../services/apiConnector');
+                const { categories } = await import('../services/apis');
+                const catResult = await apiConnector("GET", categories.CATEGORIES_API);
+                const allCategories = catResult?.data?.data;
+                if (allCategories && allCategories.length > 0) {
+                    const categoryID = allCategories[0]._id;
+                    const result = await getCatalogaPageData(categoryID, dispatch);
+                    setCatalogPageData(result);
+                }
+            } catch (error) {
+                console.log("Error fetching catalog page data", error);
+            }
         }
-        if (categoryID) {
-            fetchCatalogPageData();
-        }
-    }, [categoryID])
-    const dispatch = useDispatch();
+        fetchCatalogPageData();
+    }, [dispatch])
   return (
     <div>
         <div className=' mx-auto relative flex flex-col w-11/12 items-center justify-between text-white '>
