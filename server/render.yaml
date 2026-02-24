@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: manipal-edu-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_USER
+        sync: false
+      - key: MAIL_PASS
+        sync: false
+      - key: CLOUD_NAME
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: API_SECRET
+        sync: false
+      - key: RAZORPAY_KEY
+        sync: false
+      - key: RAZORPAY_SECRET
+        sync: false
+      - key: FOLDER_NAME
+        value: images
+      - key: FOLDER_VIDEO
+        value: videos
+      - key: CORS_ORIGIN
+        sync: false
+      - key: CONTACT_MAIL
+        sync: false

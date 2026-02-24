@@ -31,7 +31,14 @@ const whitelist = process.env.CORS_ORIGIN
 
 app.use(
   cors({
-    origin: whitelist,
+    origin: function (origin, callback) {
+      // allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+      if (whitelist.includes("*") || whitelist.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
     maxAge: 14400,
   })
