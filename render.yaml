@@ -10,8 +10,6 @@ services:
         sync: false
       - key: JWT_SECRET
         sync: false
-      - key: MAIL_HOST
-        value: smtp.gmail.com
       - key: MAIL_USER
         sync: false
       - key: MAIL_PASS
