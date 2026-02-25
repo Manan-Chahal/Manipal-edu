@@ -27,10 +27,16 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [
-      "https://manipaledunew.vercel.app",
-      "http://localhost:3000",
-    ],
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        origin === "http://localhost:3000" ||
+        /^https:\/\/manipaledunew.*\.vercel\.app$/.test(origin)
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
     maxAge: 14400,
   })
