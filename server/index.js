@@ -25,26 +25,12 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 
-let whitelist = ["*"];
-try {
-  if (process.env.CORS_ORIGIN) {
-    whitelist = JSON.parse(process.env.CORS_ORIGIN);
-  }
-} catch (e) {
-  console.log("CORS_ORIGIN parse error, allowing all origins:", e.message);
-}
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (mobile apps, curl, etc.)
-      if (!origin) return callback(null, true);
-      if (whitelist.includes("*") || whitelist.includes(origin)) {
-        return callback(null, true);
-      }
-      console.log("CORS blocked origin:", origin, "Whitelist:", whitelist);
-      return callback(new Error("Not allowed by CORS"));
-    },
+    origin: [
+      "https://manipaledunew.vercel.app",
+      "http://localhost:3000",
+    ],
     credentials: true,
     maxAge: 14400,
   })
